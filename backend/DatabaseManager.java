@@ -12,7 +12,8 @@ public class DatabaseManager {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/in_flight_service", "ilhamaryawan", null);
             //users(conn);
-            food(conn);
+            //food(conn);
+            orders(conn);
 
         }
         catch (Exception e)
@@ -81,11 +82,24 @@ public class DatabaseManager {
 
     public static void orders(Connection conn)
     {
-        String[] food_names = {"Chicken", "Beef", "Pork", "Vegetarian"};
-        boolean[] food_vegetarian = {false, false, false, true};
-        boolean[] food_halal = {true, true, false, true};
-        int[] food_amount = {100, 100, 100, 100};
+        int[] orders_userids = {0, 1, 2, 3};
+        boolean[] orders_orderconfirmed = {true, true, true, true};
 
+        String sql = "INSERT INTO orders (id, userid, orderconfirmed) VALUES (?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < orders_userids.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setInt(2, orders_userids[id]);
+                preparedStatement.setBoolean(3, orders_orderconfirmed[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Orders added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding orders: " + e.getMessage());
+        }
     }
     
 }
