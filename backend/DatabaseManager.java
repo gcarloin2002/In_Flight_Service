@@ -13,8 +13,10 @@ public class DatabaseManager {
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/in_flight_service", "ilhamaryawan", null);
             //users(conn);
             //food(conn);
-            orders(conn);
-
+            //orders(conn);
+            //orderitems(conn);
+            //seats(conn);
+            toilets(conn);
         }
         catch (Exception e)
         {
@@ -99,6 +101,72 @@ public class DatabaseManager {
             System.out.println("Orders added successfully!");
         } catch (SQLException e) {
             System.out.println("Error adding orders: " + e.getMessage());
+        }
+    }
+
+    public static void orderitems(Connection conn)
+    {
+        int[] orderitems_foodids = {0, 1, 2, 3};
+        boolean[] orderitems_confirmations = {true, true, true, true};
+
+        String sql = "INSERT INTO orderitems (id, foodid, confirmation) VALUES (?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < orderitems_foodids.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setInt(2, orderitems_foodids[id]);
+                preparedStatement.setBoolean(3, orderitems_confirmations[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Order Items added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding order items: " + e.getMessage());
+        }
+    }
+
+    public static void seats(Connection conn)
+    {
+        boolean[] seats_occupied = {true, true, true, true};
+
+        String sql = "INSERT INTO seats (id, occupied) VALUES (?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < seats_occupied.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setBoolean(2, seats_occupied[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Seats added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding seats: " + e.getMessage());
+        }
+    }
+
+    public static void toilets(Connection conn)
+    {
+        int[] toilets_sections = {1, 2, 3, 4};
+        String[] toilets_names = {"Sean", "Ilham", "Jason", null};
+        boolean[] toilets_occupied = {true, true, true, false};
+
+        String sql = "INSERT INTO toilets (id, section, name, occupied) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < toilets_sections.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setInt(2, toilets_sections[id]);
+                preparedStatement.setString(3, toilets_names[id]);
+                preparedStatement.setBoolean(4, toilets_occupied[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Toilets added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding toilets: " + e.getMessage());
         }
     }
     
