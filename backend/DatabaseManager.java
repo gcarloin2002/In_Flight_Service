@@ -11,58 +11,81 @@ public class DatabaseManager {
         {
             Class.forName("org.postgresql.Driver");
             conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/in_flight_service", "ilhamaryawan", null);
-            if(conn != null)
-                System.out.println("OK");
-            else
-                System.out.println("Failed");
-            
-            DatabaseMetaData metaData = conn.getMetaData();
+            //users(conn);
+            food(conn);
 
-            // Specify the schema and type of object (in this case, "TABLE")
-            String[] types = {"TABLE"};
-
-            // Retrieve the list of tables
-            ResultSet resultSet = metaData.getTables(null, null, "%", types);
-
-            System.out.println("Tables in the database:");
-
-            // Print the table names
-            while (resultSet.next()) {
-                String tableName = resultSet.getString("TABLE_NAME");
-                System.out.println(tableName);
-            }
-
-            // Close the ResultSet
-            resultSet.close();
-
-            int id = 0;
-            String name = "Pizza";
-            boolean vegetarian = false;
-            boolean halal = false;
-            int amount = 100;
-
-            // SQL statement to add a new food item to the 'food' table
-            String sql = "INSERT INTO food (id, name, vegetarian, halal, amount) VALUES (?, ?, ?, ?, ?)";
-
-            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                preparedStatement.setInt(1, id);
-                preparedStatement.setString(2, name);
-                preparedStatement.setBoolean(3, vegetarian);
-                preparedStatement.setBoolean(4, halal);
-                preparedStatement.setInt(5, amount);
-
-                // Execute the SQL statement
-                preparedStatement.executeUpdate();
-
-                System.out.println("Food item added successfully!");
-            } catch (SQLException e) {
-                System.out.println("Error adding food item: " + e.getMessage());
-            }
         }
         catch (Exception e)
         {
             System.out.println(e);
         }
+    }
+
+    public static void users(Connection conn)
+    {
+        String[] Users_firstNames = {"Gian", "Ilham", "Jason", "Sean"};
+        String[] Users_lastNames = {"Inguillo", "Aryawan", "Le", "Chen"};
+        int[] Users_sections = {1, 2, 3, 4};
+        int[] Users_seatids = {0, 1, 2, 3};
+        boolean[] Users_vegetarian = {false, false, false, false};
+        boolean[] Users_halal = {false, true, false, false};
+        int[] Users_seatsatisfaction = {0, 0, 0, 0};
+        String sql = "INSERT INTO users (id, firstname, lastname, section, seatid, vegetarian, halal, seatsatisfaction) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < Users_firstNames.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setString(2, Users_firstNames[id]);
+                preparedStatement.setString(3, Users_lastNames[id]);
+                preparedStatement.setInt(4, Users_sections[id]);
+                preparedStatement.setInt(5, Users_seatids[id]);
+                preparedStatement.setBoolean(6, Users_vegetarian[id]);
+                preparedStatement.setBoolean(7, Users_halal[id]);
+                preparedStatement.setInt(8, Users_seatsatisfaction[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Users added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding users: " + e.getMessage());
+        }
+    }
+
+    public static void food(Connection conn)
+    {
+        String[] food_names = {"Chicken", "Beef", "Pork", "Vegetarian"};
+        boolean[] food_vegetarian = {false, false, false, true};
+        boolean[] food_halal = {true, true, false, true};
+        int[] food_amount = {100, 100, 100, 100};
+
+        String sql = "INSERT INTO food (id, name, vegetarian, halal, amount) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            for(int id = 0; id < food_names.length; id++)
+            {
+                preparedStatement.setInt(1, id);
+                preparedStatement.setString(2, food_names[id]);
+                preparedStatement.setBoolean(3, food_vegetarian[id]);
+                preparedStatement.setBoolean(4, food_halal[id]);
+                preparedStatement.setInt(5, food_amount[id]);
+                preparedStatement.executeUpdate();
+            }
+
+            System.out.println("Food added successfully!");
+        } catch (SQLException e) {
+            System.out.println("Error adding food: " + e.getMessage());
+        }
+
+    }
+
+    public static void orders(Connection conn)
+    {
+        String[] food_names = {"Chicken", "Beef", "Pork", "Vegetarian"};
+        boolean[] food_vegetarian = {false, false, false, true};
+        boolean[] food_halal = {true, true, false, true};
+        int[] food_amount = {100, 100, 100, 100};
+
     }
     
 }
