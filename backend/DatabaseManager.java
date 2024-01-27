@@ -16,7 +16,7 @@ public class DatabaseManager {
             //orders(conn);
             //orderitems(conn);
             //seats(conn);
-            toilets(conn);
+            //toilets(conn);
         }
         catch (Exception e)
         {
