@@ -5,7 +5,11 @@ export default function Home() {
     return (
       <>
       <div className="homeLayout">
-        howdy
+        <div className="header">
+            <img className="AA_Logo" src={AA_Logo.src}/>
+        </div>
+        
+
       </div>
       </>
     )

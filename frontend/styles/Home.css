@@ -1,6 +1,23 @@
 .homeLayout {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: white;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 60%, rgba(179,179,179,1) 100%);
+    height: 140px;
+}
+
+.header {
+    display: flex;
+}
+
+body {
+    background-color: #B3B3B3;
+    margin: 0;
+}
+
+.AA_Logo {
+    height: 80px;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 10px;
 }
