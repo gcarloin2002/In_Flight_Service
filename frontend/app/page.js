@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <div className="homeLayout">
         howdy
-        <div className="">
+        <div className="links">
           <Link href="/food-order">Food Orders</Link>
           <Link href="/restroom">Restroom</Link>
           <Link href="/seat-swap">Sear Swap</Link>
