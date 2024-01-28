@@ -29,11 +29,17 @@ export default function FoodOrder() {
         <div className="container">
           <Slider {...settings}>
             {Images.map((item) => (
-              <div key={item.id}>
-                <img src={item.src} alt={item.alt} className="img" />
-                {/* <h2 className="title">{item.title}</h2>
-                <p className="description">{item.description}</p> */}
-              </div>
+              <button
+                className="slide"
+                onClick={() => {
+                  console.log("test" + item.id);
+                }}
+                key={item.id}
+              >
+                <div className="slide">
+                  <img src={item.src} alt={item.alt} className="img" />
+                </div>
+              </button>
             ))}
           </Slider>
         </div>
