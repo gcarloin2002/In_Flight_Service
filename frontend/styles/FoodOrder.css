@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.AA_Logo {
+    height: 80px;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+.chevron-left {
+    height: 30px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 30px;
+}
+
+.chevron-left {
+    padding: 2px 20px;
+}
+
+.food-order-container {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../assets/Airplane-1.png');
+    /* Additional background properties for better layout */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    min-height: 100vh;
+  }

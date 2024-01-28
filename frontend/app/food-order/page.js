@@ -1,13 +1,17 @@
 import Link from "next/link";
 import AA_Logo from "../../assets/AA_Logo.png";
+import ChevronLeft from "../../assets/chevron-left-solid.svg";
+import AirplaneBackground from "../../assets/Airplane-1.png";
 import "../../styles/FoodOrder.css";
 
 export default function foodOrder() {
   return (
-    <div className="foodOrderContainer">
+    <div className="food-order-container">
       {/* Header */}
       <div className="header">
-        <Link href="/">Back</Link>
+        <Link href="/">
+          <img className="chevron-left" src={ChevronLeft.src} />
+        </Link>
         <h1>Food Selection</h1>
         <img className="AA_Logo" src={AA_Logo.src} />
       </div>
