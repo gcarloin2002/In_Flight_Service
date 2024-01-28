@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import AA_Logo from "../../assets/AA_Logo.png";
 import ChevronLeft from "../../assets/chevron-left-solid.svg";
@@ -13,8 +14,9 @@ export default function FoodOrder() {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+
   return (
-    <div className="food-order-container">
+    <div className="food-order-container-1">
       {/* Header */}
       <div className="header">
         <Link href="/">
@@ -37,7 +39,14 @@ export default function FoodOrder() {
                 key={item.id}
               >
                 <div className="slide">
-                  <img src={item.src} alt={item.alt} className="img" />
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="img"
+                    onLoad={() => {
+                      console.log(`Image loaded: ${item.alt}`);
+                    }}
+                  />
                 </div>
               </button>
             ))}
