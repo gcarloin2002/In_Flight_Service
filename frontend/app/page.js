@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AA_Logo from "../assets/AA_Logo.png";
 import "../styles/Home.css";
 
