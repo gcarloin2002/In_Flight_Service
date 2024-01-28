@@ -20,6 +20,10 @@ export default function FoodOrder() {
 
   return (
     <div className="food-order-container-1">
+      <Link href="/food-order/checkout">
+        <button className="fixed-button">Checkout</button>
+      </Link>
+
       {/* Header */}
       <div className="header">
         <Link href="/">
@@ -33,7 +37,69 @@ export default function FoodOrder() {
         <h1 className="header-entrees">Entrees</h1>
         <div className="container">
           <Slider {...settings}>
-            {Images.map((item) => (
+            {ENTREES.map((item) => (
+              <button
+                className="slide-btn"
+                onClick={() => {
+                  console.log("test" + item.id);
+                  addOrder();
+                  decrementFood(item.id);
+                }}
+                key={item.id}
+              >
+                <div className="slide">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="img"
+                    onLoad={() => {
+                      console.log(`Image loaded: ${item.alt}`);
+                    }}
+                  />
+                </div>
+              </button>
+            ))}
+          </Slider>
+        </div>
+      </div>
+
+      {/* Need to change onclick, images here */}
+      <div className="">
+        <h1 className="header-entrees">Snacks</h1>
+        <div className="container">
+          <Slider {...settings}>
+            {SNACKS.map((item) => (
+              <button
+                className="slide-btn"
+                onClick={() => {
+                  console.log("test" + item.id);
+                  addOrder();
+                  decrementFood(item.id);
+                }}
+                key={item.id}
+              >
+                <div className="slide">
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="img"
+                    onLoad={() => {
+                      console.log(`Image loaded: ${item.alt}`);
+                    }}
+                  />
+                </div>
+              </button>
+            ))}
+          </Slider>
+        </div>
+      </div>
+
+      {/* Need to change onclick, images here */}
+      <div className="">
+        <h1 className="header-entrees">Drinks</h1>
+        <div className="container">
+          <Slider {...settings}>
+            {DRINKS.map((item) => (
               <button
                 className="slide-btn"
                 onClick={() => {
@@ -105,7 +171,7 @@ async function decrementFood(id) {
   }
 }
 
-const Images = [
+const ENTREES = [
   {
     id: 0,
     src: "https://www.averiecooks.com/wp-content/uploads/2021/01/garlicbutterchicken-5.jpg",
@@ -148,6 +214,106 @@ const Images = [
   {
     id: 5,
     src: "https://www.foodiesfeed.com/wp-content/uploads/2023/04/strawberry-milk-splash.jpg",
+    alt: "Image 8",
+    title: "Lamborghini Gallardo",
+    description:
+      "The Gallardo is a 2 seater 10 cylinder car and has length of 4345mm, width of 1900mm and a wheelbase of 2560mm.",
+  },
+];
+
+const SNACKS = [
+  {
+    id: 0,
+    src: "https://target.scene7.com/is/image/Target/GUEST_bcd59b40-b890-4e6b-85a1-1831623cafb0?wid=488&hei=488&fmt=pjpeg",
+    alt: "Image 1",
+    title: "Lamborghini Huracan Performante",
+    description:
+      "The Huracán Performante has reworked the concept of super sports cars and taken the notion of performance to levels never seen before.",
+  },
+  {
+    id: 1,
+    src: "https://cdn.loveandlemons.com/wp-content/uploads/2021/07/peanut-butter-no-bake-cookies-1.jpg",
+    alt: "Image 3",
+    title: "Ford Mustang",
+    description: "For offroad lovers. Super fast, Super Comfortable.",
+  },
+  {
+    id: 2,
+    src: "https://target.scene7.com/is/image/Target/GUEST_6df4a8dd-a0c3-40df-83b9-b02ea713f292",
+    alt: "Image 7",
+    title: "Dodge Challenger",
+    description:
+      "The Challenger has a classic muscle-car interior, with a simple design",
+  },
+  {
+    id: 3,
+    src: "https://cdn11.bigcommerce.com/s-3stx4pub31/images/stencil/1280x1280/products/3379/24916/saladix-cross-27__72378.1687529980.jpg?c=2",
+    alt: "Image 8",
+    title: "Lamborghini Gallardo",
+    description:
+      "The Gallardo is a 2 seater 10 cylinder car and has length of 4345mm, width of 1900mm and a wheelbase of 2560mm.",
+  },
+  {
+    id: 4,
+    src: "https://www.budgetbytes.com/wp-content/uploads/2019/05/Veggie-Snack-Packs-H-500x500.jpg",
+    alt: "Image 7",
+    title: "Dodge Challenger",
+    description:
+      "The Challenger has a classic muscle-car interior, with a simple design",
+  },
+  {
+    id: 5,
+    src: "https://www.halfbakedharvest.com/wp-content/uploads/2020/09/Everything-Ranch-Cheese-and-Pretzel-Snack-Mix-1.jpg",
+    alt: "Image 8",
+    title: "Lamborghini Gallardo",
+    description:
+      "The Gallardo is a 2 seater 10 cylinder car and has length of 4345mm, width of 1900mm and a wheelbase of 2560mm.",
+  },
+];
+
+const DRINKS = [
+  {
+    id: 0,
+    src: "https://hips.hearstapps.com/hmg-prod/images/sex-on-the-beach-vertical-6442f7c22a415.jpg",
+    alt: "Image 1",
+    title: "Lamborghini Huracan Performante",
+    description:
+      "The Huracán Performante has reworked the concept of super sports cars and taken the notion of performance to levels never seen before.",
+  },
+  {
+    id: 1,
+    src: "https://www.sugarandsoul.co/wp-content/uploads/2022/05/blue-lagoon-drink-10.jpg",
+    alt: "Image 3",
+    title: "Ford Mustang",
+    description: "For offroad lovers. Super fast, Super Comfortable.",
+  },
+  {
+    id: 2,
+    src: "https://www.southernliving.com/thmb/SEwOXQceeJ1VPWhY1OQaDKTqV2Q=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/SL_Roy_Rogers_Drink_3-8e06c8f2df244c5ea6c5b7b55848072f.jpg",
+    alt: "Image 7",
+    title: "Dodge Challenger",
+    description:
+      "The Challenger has a classic muscle-car interior, with a simple design",
+  },
+  {
+    id: 3,
+    src: "https://waterbutlers.com/cdn/shop/products/coke1_41ae86e4-d7a6-4fb3-93e7-049ab97312fc_600x.jpg?v=1606515428",
+    alt: "Image 8",
+    title: "Lamborghini Gallardo",
+    description:
+      "The Gallardo is a 2 seater 10 cylinder car and has length of 4345mm, width of 1900mm and a wheelbase of 2560mm.",
+  },
+  {
+    id: 4,
+    src: "https://www.thecookierookie.com/wp-content/uploads/2021/09/featured-starbucks-pink-drink-recipe.jpg",
+    alt: "Image 7",
+    title: "Dodge Challenger",
+    description:
+      "The Challenger has a classic muscle-car interior, with a simple design",
+  },
+  {
+    id: 5,
+    src: "https://www.halfbakedharvest.com/wp-content/uploads/2021/07/Strawberry-Pink-Drink-1.jpg",
     alt: "Image 8",
     title: "Lamborghini Gallardo",
     description:

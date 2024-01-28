@@ -45,9 +45,22 @@
   }
   .content {
     text-align: center;
-    margin-bottom: 30px;
-    margin-top: 130px;
+    margin-top: 90px;
   }
+
+  .fixed-button {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 15px 30px;
+    background-color: #007bff; /* Example color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+}
   
   .img {
     display: flex;
@@ -60,7 +73,7 @@
   .container {
     margin: 0 auto;
     width: 100%;
-    height: 80vh;
+    height: 43vh;
     border-color: white;
   }
   .title {
