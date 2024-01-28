@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:password@localhost:5432/inflightappdb"
+}
+
+model User {
+  id              Int          @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  section         Int
+  seatId          Int
+  vegetarian      Boolean
+  halal           Boolean
+  seatSatisfaction Int
+  seat            Seat         @relation(fields: [seatId], references: [id])
+  orders          Order[]
+}
+
+model Seat {
+  id              Int          @id @default(autoincrement())
+  location        String
+  occupied        Boolean
+  users           User[]
+  toiletQueues    ToiletQueue[]
+}
+
+model ToiletQueue {
+  id              Int          @id @default(autoincrement())
+  section         Int
+  name            String
+  occupied        Boolean
+  open            Int
+  seatId          Int
+  seat            Seat         @relation(fields: [seatId], references: [id])
+}
+
+model Order {
+  id              Int          @id @default(autoincrement())
+  userId          Int
+  orderConfirmed  Boolean
+  user            User         @relation(fields: [userId], references: [id])
+  orderItems      OrderItem[]
+}
+
+model OrderItem {
+  id              Int          @id @default(autoincrement())
+  orderId         Int
+  foodId          Int
+  confirmation    Boolean
+  order           Order        @relation(fields: [orderId], references: [id])
+  food            Food         @relation(fields: [foodId], references: [id])
+}
+
+model Food {
+  id              Int          @id @default(autoincrement())
+  name            String
+  vegetarian      Boolean
+  halal           Boolean
+  amount          Int
+  orderItems      OrderItem[]
+}
