@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.food-order-container {
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../assets/Airplane-1.png');
+    /* Additional background properties for better layout */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 110px;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    height: 110px;
+}
+
+.centralContainer {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: wrap;
+}
+
+.buttonCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.reserveButton {
+    background-color: white;
+    border-radius: 10%;
+    width: 275px;
+    height: 275px;
+}
