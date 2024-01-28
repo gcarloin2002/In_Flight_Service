@@ -3,11 +3,24 @@ body {
     padding: 0;
 }
 
+.header {
+    display: flex;
+    width: 100%;
+    height: 110px;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    height: 110px;
+}
+
 .chevron-left {
     height: 50px;
     margin-left: 20px;
     margin-top: 20px;
 }
+
 
 .food-order-container {
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../assets/Airplane-1.png');
@@ -23,61 +36,26 @@ body {
     align-items: center;
 }
 
-.header {
-    display: flex;
-    width: 100%;
-    height: 110px;
-}
-
-.footer {
-    display: flex;
-    width: 100%;
-    height: 110px;
-}
-
-.centralContainer {
-    width: 600px;
-    height: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex: wrap;
-}
-
-.buttonCol {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.reserveButton {
+.confirmBox {
     background-color: white;
     border-radius: 10%;
-    width: 275px;
-    height: 275px;
+    width: 375px;
+    height: 475px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.toiletName {
-    font-family: 'Kaisei Decol', sans-serif;
-    font-size: 50px;
-    border-bottom: 4px solid #0D73B1;
-    margin-bottom: 10px;
+.confirmedImg {
+    width: 100px;
+    height: 100px;
 }
 
-.occupiedStatus {
-    color: #B61F23;
-    font-weight: 600;
+.confirmMessage {
+    font-weight: 300;
     font-family: 'Kaisei Decol', sans-serif;
-    font-size: 20px;
-}
-
-.notOccupiedStatus {
-    color: green;
-    font-weight: 600;
-    font-family: 'Kaisei Decol', sans-serif;
-    font-size: 20px;
+    font-size: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
