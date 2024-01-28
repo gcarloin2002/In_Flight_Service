@@ -1,0 +1,296 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.9 (Homebrew)
+-- Dumped by pg_dump version 16.0
+
+-- Started on 2024-01-27 17:49:17 CST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4 (class 2615 OID 2200)
+-- Name: public; Type: SCHEMA; Schema: -; Owner: ilhamaryawan
+--
+
+-- *not* creating schema, since initdb creates it
+
+
+ALTER SCHEMA public OWNER TO ilhamaryawan;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 209 (class 1259 OID 16386)
+-- Name: Users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public."Users" (
+    id integer NOT NULL,
+    firstname text NOT NULL,
+    lastname text NOT NULL,
+    section integer NOT NULL,
+    seatid integer NOT NULL,
+    vegetarian boolean NOT NULL,
+    halal boolean NOT NULL,
+    seatsatisfaction integer NOT NULL
+);
+
+
+ALTER TABLE public."Users" OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 16415)
+-- Name: food; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.food (
+    id integer NOT NULL,
+    name text NOT NULL,
+    vegetarian boolean NOT NULL,
+    halal boolean NOT NULL,
+    amount integer NOT NULL
+);
+
+
+ALTER TABLE public.food OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 16410)
+-- Name: orderitems; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orderitems (
+    id integer NOT NULL,
+    foodid integer NOT NULL,
+    confirmation boolean NOT NULL
+);
+
+
+ALTER TABLE public.orderitems OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 16432)
+-- Name: orders; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orders (
+    id integer NOT NULL,
+    userid integer NOT NULL,
+    orderconfirmed boolean NOT NULL
+);
+
+
+ALTER TABLE public.orders OWNER TO postgres;
+
+--
+-- TOC entry 210 (class 1259 OID 16393)
+-- Name: seats; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.seats (
+    id integer NOT NULL,
+    occupied boolean NOT NULL
+);
+
+
+ALTER TABLE public.seats OWNER TO postgres;
+
+--
+-- TOC entry 215 (class 1259 OID 16444)
+-- Name: toilets; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.toilets (
+    id integer NOT NULL,
+    section integer NOT NULL,
+    name text,
+    occupied boolean NOT NULL
+);
+
+
+ALTER TABLE public.toilets OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 16422)
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+)
+INHERITS (public."Users");
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- TOC entry 3628 (class 0 OID 16386)
+-- Dependencies: 209
+-- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+
+
+--
+-- TOC entry 3631 (class 0 OID 16415)
+-- Dependencies: 212
+-- Data for Name: food; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.food (id, name, vegetarian, halal, amount) VALUES (0, 'Chicken', false, true, 100);
+INSERT INTO public.food (id, name, vegetarian, halal, amount) VALUES (1, 'Beef', false, true, 100);
+INSERT INTO public.food (id, name, vegetarian, halal, amount) VALUES (2, 'Pork', false, false, 100);
+INSERT INTO public.food (id, name, vegetarian, halal, amount) VALUES (3, 'Vegetarian', true, true, 100);
+
+
+--
+-- TOC entry 3630 (class 0 OID 16410)
+-- Dependencies: 211
+-- Data for Name: orderitems; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.orderitems (id, foodid, confirmation) VALUES (0, 0, true);
+INSERT INTO public.orderitems (id, foodid, confirmation) VALUES (1, 1, true);
+INSERT INTO public.orderitems (id, foodid, confirmation) VALUES (2, 2, true);
+INSERT INTO public.orderitems (id, foodid, confirmation) VALUES (3, 3, true);
+
+
+--
+-- TOC entry 3633 (class 0 OID 16432)
+-- Dependencies: 214
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.orders (id, userid, orderconfirmed) VALUES (0, 0, true);
+INSERT INTO public.orders (id, userid, orderconfirmed) VALUES (1, 1, true);
+INSERT INTO public.orders (id, userid, orderconfirmed) VALUES (2, 2, true);
+INSERT INTO public.orders (id, userid, orderconfirmed) VALUES (3, 3, true);
+
+
+--
+-- TOC entry 3629 (class 0 OID 16393)
+-- Dependencies: 210
+-- Data for Name: seats; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.seats (id, occupied) VALUES (0, true);
+INSERT INTO public.seats (id, occupied) VALUES (1, true);
+INSERT INTO public.seats (id, occupied) VALUES (2, true);
+INSERT INTO public.seats (id, occupied) VALUES (3, true);
+
+
+--
+-- TOC entry 3634 (class 0 OID 16444)
+-- Dependencies: 215
+-- Data for Name: toilets; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.toilets (id, section, name, occupied) VALUES (0, 1, 'Sean', true);
+INSERT INTO public.toilets (id, section, name, occupied) VALUES (1, 2, 'Ilham', true);
+INSERT INTO public.toilets (id, section, name, occupied) VALUES (2, 3, 'Jason', true);
+INSERT INTO public.toilets (id, section, name, occupied) VALUES (3, 4, NULL, false);
+
+
+--
+-- TOC entry 3632 (class 0 OID 16422)
+-- Dependencies: 213
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO public.users (id, firstname, lastname, section, seatid, vegetarian, halal, seatsatisfaction) VALUES (0, 'Gian', 'Inguillo', 1, 0, false, false, 0);
+INSERT INTO public.users (id, firstname, lastname, section, seatid, vegetarian, halal, seatsatisfaction) VALUES (1, 'Ilham', 'Aryawan', 2, 1, false, true, 0);
+INSERT INTO public.users (id, firstname, lastname, section, seatid, vegetarian, halal, seatsatisfaction) VALUES (2, 'Jason', 'Le', 3, 2, false, false, 0);
+INSERT INTO public.users (id, firstname, lastname, section, seatid, vegetarian, halal, seatsatisfaction) VALUES (3, 'Sean', 'Chen', 4, 3, false, false, 0);
+
+
+--
+-- TOC entry 3476 (class 2606 OID 16392)
+-- Name: Users Users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public."Users"
+    ADD CONSTRAINT "Users_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3482 (class 2606 OID 16421)
+-- Name: food food_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.food
+    ADD CONSTRAINT food_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3480 (class 2606 OID 16414)
+-- Name: orderitems orderitems_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orderitems
+    ADD CONSTRAINT orderitems_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3486 (class 2606 OID 16436)
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3478 (class 2606 OID 16397)
+-- Name: seats seats_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.seats
+    ADD CONSTRAINT seats_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3488 (class 2606 OID 16450)
+-- Name: toilets toilets_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.toilets
+    ADD CONSTRAINT toilets_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3484 (class 2606 OID 16428)
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3640 (class 0 OID 0)
+-- Dependencies: 4
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: ilhamaryawan
+--
+
+REVOKE USAGE ON SCHEMA public FROM PUBLIC;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2024-01-27 17:49:18 CST
+
+--
+-- PostgreSQL database dump complete
+--
+
