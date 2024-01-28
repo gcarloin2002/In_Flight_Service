@@ -21,12 +21,33 @@ export default function FoodOrder() {
   const [entrees, setEntrees] = useState();
   const [snacks, setSnacks] = useState();
   const [drinks, setDrinks] = useState();
+  const [itemId, setItemId] = useState();
+
+  const foodIdHandler = (id) => {
+    setItemId(id);
+  };
 
   return (
     <div className="food-order-container-1">
-      <Link href="/food-order/checkout">
-        <button className="fixed-button">Checkout</button>
-      </Link>
+      <div
+        className="fixed-button"
+        onClick={(e) => {
+          // Prevent the default behavior of the link
+          e.preventDefault();
+
+          // Check if itemId is null or undefined before proceeding to checkout
+          if (itemId === null || itemId === undefined) {
+            alert("Please select an item before proceeding to checkout.");
+            return;
+          }
+          decrementFood(itemId);
+
+          // Programmatically navigate to the checkout page
+          window.location.href = "/food-order/checkout";
+        }}
+      >
+        Checkout
+      </div>
 
       {/* Header */}
       <div className="header">
@@ -47,7 +68,7 @@ export default function FoodOrder() {
                 onClick={() => {
                   console.log("test" + item.id);
                   addOrder();
-                  decrementFood(item.id);
+                  foodIdHandler(item.id);
                   setEntrees(item.id);
                 }}
                 key={item.id}
@@ -78,7 +99,7 @@ export default function FoodOrder() {
                 onClick={() => {
                   console.log("test" + item.id);
                   addOrder();
-                  decrementFood(item.id);
+                  foodIdHandler(item.id);
                   setSnacks(item.id);
                 }}
                 key={item.id}
@@ -109,7 +130,7 @@ export default function FoodOrder() {
                 onClick={() => {
                   console.log("test" + item.id);
                   addOrder();
-                  decrementFood(item.id);
+                  foodIdHandler(item.id);
                   setDrinks(item.id);
                 }}
                 key={item.id}
