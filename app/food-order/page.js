@@ -1,12 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import Link from "next/link";
-import AA_Logo from "../../assets/AA_Logo.png";
+import AA_Logo from "../../assets/AA_Logo.svg";
 import ChevronLeft from "../../assets/chevron-left-solid.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../styles/FoodOrder.css";
+import Image from "next/image";
 
 export default function FoodOrder() {
   const settings = {
@@ -25,7 +26,7 @@ export default function FoodOrder() {
           <img className="chevron-left" src={ChevronLeft.src} />
         </Link>
         <h1>Food Selection</h1>
-        <img className="AA_Logo" src={AA_Logo.src} />
+        <Image src={AA_Logo} alt="AA Logo" className="AA_Logo_Food" />
       </div>
 
       <div className="content">

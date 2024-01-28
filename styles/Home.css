@@ -17,14 +17,6 @@ body {
     height: 110px;
 }
 
-
-.AA_Logo {
-    height: 80px;
-    margin-left: auto;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
 .buttonSet {
     display: flex;
     justify-content: space-between;

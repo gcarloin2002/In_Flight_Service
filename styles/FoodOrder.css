@@ -1,6 +1,6 @@
 
-.AA_Logo {
-    height: 80px;
+.AA_Logo_Food {
+    height: 150px;
     margin-left: auto;
     margin-right: 20px;
     margin-top: 10px;
@@ -8,6 +8,9 @@
 
 .chevron-left {
     height: 30px;
+}
+.header h1 {
+    font-size: 40px;
 }
 
 
