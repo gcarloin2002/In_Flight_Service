@@ -9,10 +9,10 @@ import {NextApiRequest, NextApiResponse} from "next";
  * @returns {Promise<void>} A Promise that resolves when the operation is complete.
  */
 export default async(req: NextApiRequest, res: NextApiResponse)=> {
-    const id:number = req.body.newRow.id;
-    const section:number = req.body.newRow.section;
-    const name:string = req.body.newRow.name;
-    const occupied:boolean = req.body.newRow.occupied;
+    const id:number = req.body.toiletNumber;
+    const section:number = id + 1;
+    const name:string = req.body.reservationName;
+    const occupied:boolean = true;
 
     try {
         // Perform the database update operation

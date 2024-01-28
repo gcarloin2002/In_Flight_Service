@@ -7,6 +7,7 @@ import "../../styles/Restaurant.css";
 
 export default function Restroom() {
     const [toiletOccupancy, setToiletOccupancy] = useState([]);
+    const [reservationName, setReservationName] = useState('');
 
     useEffect(() => {
         // Fetch toilet occupancy data from the API
@@ -15,7 +16,7 @@ export default function Restroom() {
             const response = await fetch('/api/toiletOccupancy'); // Update the API endpoint accordingly
             const data = await response.json();
             setToiletOccupancy(data.toiletOccupancy);
-            console.log(data);
+
           } catch (error) {
             console.error('Error fetching toilet occupancy:', error);
           }
@@ -60,6 +61,22 @@ export default function Restroom() {
         }
       };
 
+      const handleNameChange1 = (event) => {
+        setReservationName(document.getElementById('text1').value);
+      };
+
+      const handleNameChange2 = (event) => {
+        setReservationName(document.getElementById('text2').value);
+      };
+
+      const handleNameChange3 = (event) => {
+        setReservationName(document.getElementById('text3').value);
+      };
+
+      const handleNameChange4 = (event) => {
+        setReservationName(document.getElementById('text4').value);
+      };
+
     return (
         <div className="food-order-container">
           <div className="header">
@@ -73,8 +90,9 @@ export default function Restroom() {
                 Toilet 1 {toiletOccupancy[0] ? '(Occupied)' : '(Not occupied)'}
                 {!toiletOccupancy[0] && (
                   <div>
-                    <input type="text" placeholder="Enter your name" />
-                    <button onClick={() => handleReserve(1)}>Reserve</button>
+                    <input type="text" id = "text1" placeholder="Enter your name"
+                  onChange={handleNameChange1}/>
+                    <button onClick={() => handleReserve(0)}>Reserve</button>
                   </div>
                 )}
               </div>
@@ -82,8 +100,9 @@ export default function Restroom() {
                 Toilet 3 {toiletOccupancy[2] ? '(Occupied)' : '(Not occupied)'}
                 {!toiletOccupancy[2] && (
                   <div>
-                    <input type="text" placeholder="Enter your name" />
-                    <button onClick={() => handleReserve(3)}>Reserve</button>
+                    <input type="text" id = "text3" placeholder="Enter your name"
+                  onChange={handleNameChange3}/>
+                    <button onClick={() => handleReserve(2)}>Reserve</button>
                   </div>
                 )}
               </div>
@@ -93,8 +112,9 @@ export default function Restroom() {
                 Toilet 2 {toiletOccupancy[1] ? '(Occupied)' : '(Not occupied)'}
                 {!toiletOccupancy[1] && (
                   <div>
-                    <input type="text" placeholder="Enter your name" />
-                    <button onClick={() => handleReserve(2)}>Reserve</button>
+                    <input type="text" id = "text2" placeholder="Enter your name"
+                  onChange={handleNameChange2}/>
+                    <button onClick={() => handleReserve(1)}>Reserve</button>
                   </div>
                 )}
               </div>
@@ -102,8 +122,9 @@ export default function Restroom() {
                 Toilet 4 {toiletOccupancy[3] ? '(Occupied)' : '(Not occupied)'}
                 {!toiletOccupancy[3] && (
                   <div>
-                    <input type="text" placeholder="Enter your name" />
-                    <button onClick={() => handleReserve(4)}>Reserve</button>
+                    <input type="text" id = "text4" placeholder="Enter your name"
+                  onChange={handleNameChange4}/>
+                    <button onClick={() => handleReserve(3)}>Reserve</button>
                   </div>
                 )}
               </div>

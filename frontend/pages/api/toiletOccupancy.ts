@@ -12,7 +12,7 @@ export default async(req: NextApiRequest, res: NextApiResponse)=> {
     try {
         // Perform the database update operation
         const result = await query(
-            'SELECT occupied from toilets'
+            'SELECT occupied from toilets ORDER BY id'
         );
         const toiletOccupancy = result.rows.map((row) => Boolean(row.occupied));
 
