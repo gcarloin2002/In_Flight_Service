@@ -16,7 +16,7 @@ export default async(req: NextApiRequest, res: NextApiResponse)=> {
     try {
         // Perform the database update operation
         const result = await query(
-            'INSERT INTO employees(id, userid, orderconfirmed) VALUES ($1, $2, $3)',
+            'INSERT INTO orders(id, userid, orderconfirmed) VALUES ($1, $2, $3)',
             [id, userid, orderconfirmed]
         );
         res.json(result.rows);
