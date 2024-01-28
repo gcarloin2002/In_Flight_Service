@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:password@localhost:5432/inflightappdb"
+  url      = "postgresql://localhost:5432/in_flight_service"
 }
 
 model User {
