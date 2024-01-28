@@ -85,10 +85,10 @@ export default function Restroom() {
       <div className="centralContainer">
         <div className="buttonCol">
           <div className="reserveButton">
-            Toilet 1{" "}
+            <div className="toiletName">Toilet 1{" "}</div>
             {toiletOccupancy && toiletOccupancy[0]
-              ? "(Occupied)"
-              : "(Not occupied)"}
+              ? <div className="occupiedStatus">(Occupied)</div>
+              : <div className="notOccupiedStatus">(Unoccupied)</div>}
             {toiletOccupancy && !toiletOccupancy[0] && (
               <div>
                 <input
@@ -102,10 +102,10 @@ export default function Restroom() {
             )}
           </div>
           <div className="reserveButton">
-            Toilet 3{" "}
+            <div className="toiletName">Toilet 3{" "}</div>
             {toiletOccupancy && toiletOccupancy[2]
-              ? "(Occupied)"
-              : "(Not occupied)"}
+              ? <div className="occupiedStatus">(Occupied)</div>
+              : <div className="notOccupiedStatus">(Unoccupied)</div>}
             {toiletOccupancy && !toiletOccupancy[2] && (
               <div>
                 <input
@@ -121,10 +121,10 @@ export default function Restroom() {
         </div>
         <div className="buttonCol">
           <div className="reserveButton">
-            Toilet 2{" "}
+            <div className="toiletName">Toilet 2{" "}</div>
             {toiletOccupancy && toiletOccupancy[1]
-              ? "(Occupied)"
-              : "(Not occupied)"}
+              ? <div className="occupiedStatus">(Occupied)</div>
+              : <div className="notOccupiedStatus">(Unoccupied)</div>}
             {toiletOccupancy && !toiletOccupancy[1] && (
               <div>
                 <input
@@ -138,10 +138,10 @@ export default function Restroom() {
             )}
           </div>
           <div className="reserveButton">
-            Toilet 4{" "}
+            <div className="toiletName">Toilet 4{" "}</div>
             {toiletOccupancy && toiletOccupancy[3]
-              ? "(Occupied)"
-              : "(Not occupied)"}
+              ? <div className="occupiedStatus">(Occupied)</div>
+              : <div className="notOccupiedStatus">(Unoccupied)</div>}
             {toiletOccupancy && !toiletOccupancy[3] && (
               <div>
                 <input

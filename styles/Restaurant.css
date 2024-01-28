@@ -49,4 +49,27 @@ body {
     border-radius: 10%;
     width: 275px;
     height: 275px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.toiletName {
+    font-family: 'Kaisei Decol', sans-serif;
+    font-size: 50px;
+    border-bottom: 4px solid #0D73B1;
+    margin-bottom: 10px;
+}
+
+.occupiedStatus {
+    color: #B61F23;
+    font-weight: 400;
+}
+
+.notOccupiedStatus {
+    color: green;
+    font-weight: 600;
+    font-family: 'Kaisei Decol', sans-serif;
+    font-size: 20px;
 }
