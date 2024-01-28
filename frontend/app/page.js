@@ -13,10 +13,10 @@ export default function Home() {
         </div>
 
         <div className="buttonSet">
-            <div class="menuButton">
+            <div className="menuButton">
                 
             </div>
-            <div class="menuButton">
+            <div className="menuButton">
 
             </div>
         </div>
