@@ -64,7 +64,9 @@ body {
 
 .occupiedStatus {
     color: #B61F23;
-    font-weight: 400;
+    font-weight: 600;
+    font-family: 'Kaisei Decol', sans-serif;
+    font-size: 20px;
 }
 
 .notOccupiedStatus {
