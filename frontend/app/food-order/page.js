@@ -33,6 +33,8 @@ export default function FoodOrder() {
                 className="slide"
                 onClick={() => {
                   console.log("test" + item.id);
+                  addOrder();
+                  decrementFood(item.id);
                 }}
                 key={item.id}
               >
@@ -48,9 +50,52 @@ export default function FoodOrder() {
   );
 }
 
+async function addOrder() {
+    const newOrder = {userid: 0, orderconfirmed: false };
+    try {
+        const response = await fetch('/api/addOrder', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                newOrder,
+            }),
+        });
+        const data = await response.json(); // await here
+
+        console.log(data);
+
+        // You might want to handle the response here if needed
+    } catch (error) {
+        console.error('Error updating row:', error);
+    }
+}
+
+async function decrementFood(id) {
+    try {
+        const response = await fetch('/api/decrementFood', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                id,
+            }),
+        });
+        const data = await response.json(); // await here
+
+        console.log(data);
+
+        // You might want to handle the response here if needed
+    } catch (error) {
+        console.error('Error updating row:', error);
+    }
+}
+
 const Images = [
   {
-    id: 1,
+    id: 0,
     src: "https://www.averiecooks.com/wp-content/uploads/2021/01/garlicbutterchicken-5.jpg",
     alt: "Image 1",
     title: "Lamborghini Huracan Performante",
@@ -58,14 +103,14 @@ const Images = [
       "The Huracán Performante has reworked the concept of super sports cars and taken the notion of performance to levels never seen before.",
   },
   {
-    id: 3,
+    id: 1,
     src: "https://hips.hearstapps.com/hmg-prod/images/goulash-vertical-64de8d216ea51.jpg",
     alt: "Image 3",
     title: "Ford Mustang",
     description: "For offroad lovers. Super fast, Super Comfortable.",
   },
   {
-    id: 7,
+    id: 3,
     src: "https://www.eatingwell.com/thmb/Z30Dnoxft_c8dwJzKakVpJuuqJA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/creamy-garlic-skillet-chicken-with-spinach-7fb96b8ced6b4075b61b01d5d308f73b.jpg",
     alt: "Image 7",
     title: "Dodge Challenger",
@@ -73,7 +118,7 @@ const Images = [
       "The Challenger has a classic muscle-car interior, with a simple design",
   },
   {
-    id: 8,
+    id: 2,
     src: "https://www.foodandwine.com/thmb/fjNakOY7IcuvZac1hR3JcSo7vzI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-recipes-pasta-sausage-basil-and-mustard-hero-06-cfd1c0a2989e474ea7e574a38182bbee.jpg",
     alt: "Image 8",
     title: "Lamborghini Gallardo",

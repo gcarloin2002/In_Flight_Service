@@ -9,7 +9,6 @@ import {NextApiRequest, NextApiResponse} from "next";
  * @returns {Promise<void>} A Promise that resolves when the operation is complete.
  */
 export default async(req: NextApiRequest, res: NextApiResponse)=> {
-    const id:number = req.body.newOrder.id;
     const userid:number = req.body.newOrder.userid;
     const orderconfirmed:boolean = req.body.newOrder.orderconfirmed;
     console.log(req.body);
@@ -17,8 +16,8 @@ export default async(req: NextApiRequest, res: NextApiResponse)=> {
     try {
         // Perform the database update operation
         const result = await query(
-            'INSERT INTO orders(id, userid, orderconfirmed) VALUES ($1, $2, $3)',
-            [id, userid, orderconfirmed]
+            'INSERT INTO orders(userid, orderconfirmed) VALUES ($1, $2)',
+            [userid, orderconfirmed]
         );
         res.json(result.rows);
     } catch (error) {
