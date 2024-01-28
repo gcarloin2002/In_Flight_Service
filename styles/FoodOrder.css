@@ -10,11 +10,18 @@
     height: 30px;
 }
 
+
 .header {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 5px 30px;
+}
+
+.header-entrees {
+  display: flex;
+  flex-direction: row;
+  margin-left: 45px;
 }
 
 .chevron-left {
@@ -26,6 +33,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 
   body {
@@ -35,14 +43,16 @@
   .content {
     text-align: center;
     margin-bottom: 30px;
+    margin-top: 130px;
   }
   
   .img {
     display: flex;
     margin: 0 auto;
     height: 30vh;
-    width: 70%;
+    width: 80%;
     border-radius: 5%;
+    object-fit: cover;
   }
   .container {
     margin: 0 auto;
@@ -64,3 +74,9 @@
     font-size: 25px;
     margin: 20px auto;
   }
+
+  .slide-btn {
+    background-color: transparent;
+    border: none;
+  }
+

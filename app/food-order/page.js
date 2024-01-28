@@ -11,8 +11,10 @@ import "../../styles/FoodOrder.css";
 export default function FoodOrder() {
   const settings = {
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    infinite: false,
+    navigator: false,
   };
 
   return (
@@ -27,12 +29,12 @@ export default function FoodOrder() {
       </div>
 
       <div className="content">
-        <h1 className="header">Entrees</h1>
+        <h1 className="header-entrees">Entrees</h1>
         <div className="container">
           <Slider {...settings}>
             {Images.map((item) => (
               <button
-                className="slide"
+                className="slide-btn"
                 onClick={() => {
                   console.log("test" + item.id);
                   addOrder();
@@ -60,46 +62,46 @@ export default function FoodOrder() {
 }
 
 async function addOrder() {
-    const newOrder = {userid: 0, orderconfirmed: false };
-    try {
-        const response = await fetch('/api/addOrder', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                newOrder,
-            }),
-        });
-        const data = await response.json(); // await here
+  const newOrder = { userid: 0, orderconfirmed: false };
+  try {
+    const response = await fetch("/api/addOrder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        newOrder,
+      }),
+    });
+    const data = await response.json(); // await here
 
-        console.log(data);
+    console.log(data);
 
-        // You might want to handle the response here if needed
-    } catch (error) {
-        console.error('Error updating row:', error);
-    }
+    // You might want to handle the response here if needed
+  } catch (error) {
+    console.error("Error updating row:", error);
+  }
 }
 
 async function decrementFood(id) {
-    try {
-        const response = await fetch('/api/decrementFood', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id,
-            }),
-        });
-        const data = await response.json(); // await here
+  try {
+    const response = await fetch("/api/decrementFood", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+    const data = await response.json(); // await here
 
-        console.log(data);
+    console.log(data);
 
-        // You might want to handle the response here if needed
-    } catch (error) {
-        console.error('Error updating row:', error);
-    }
+    // You might want to handle the response here if needed
+  } catch (error) {
+    console.error("Error updating row:", error);
+  }
 }
 
 const Images = [
@@ -119,7 +121,7 @@ const Images = [
     description: "For offroad lovers. Super fast, Super Comfortable.",
   },
   {
-    id: 3,
+    id: 2,
     src: "https://www.eatingwell.com/thmb/Z30Dnoxft_c8dwJzKakVpJuuqJA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/creamy-garlic-skillet-chicken-with-spinach-7fb96b8ced6b4075b61b01d5d308f73b.jpg",
     alt: "Image 7",
     title: "Dodge Challenger",
@@ -127,8 +129,24 @@ const Images = [
       "The Challenger has a classic muscle-car interior, with a simple design",
   },
   {
-    id: 2,
+    id: 3,
     src: "https://www.foodandwine.com/thmb/fjNakOY7IcuvZac1hR3JcSo7vzI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/FAW-recipes-pasta-sausage-basil-and-mustard-hero-06-cfd1c0a2989e474ea7e574a38182bbee.jpg",
+    alt: "Image 8",
+    title: "Lamborghini Gallardo",
+    description:
+      "The Gallardo is a 2 seater 10 cylinder car and has length of 4345mm, width of 1900mm and a wheelbase of 2560mm.",
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D",
+    alt: "Image 7",
+    title: "Dodge Challenger",
+    description:
+      "The Challenger has a classic muscle-car interior, with a simple design",
+  },
+  {
+    id: 5,
+    src: "https://www.foodiesfeed.com/wp-content/uploads/2023/04/strawberry-milk-splash.jpg",
     alt: "Image 8",
     title: "Lamborghini Gallardo",
     description:
