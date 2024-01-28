@@ -19,7 +19,7 @@ export default function Home() {
                     <img className="icon" src={restroom_icon.src}/>
                     <div className="buttonTitle">Restroom</div>
                     <div className="redLine"> </div>
-                    <p>Order food now and your order will arrive next round</p>
+                    <p>Check restroom availability and reserve a time </p>
                     <div className="redBox">Reserve</div>
                 </div>
             </Link>
@@ -28,7 +28,7 @@ export default function Home() {
                     <img className="icon" src={food_icon.src}/>
                     <div className="buttonTitle">Food Order</div>
                     <div className="blueLine"> </div>
-                    <p>Check restroom availability and reserve a time </p>
+                    <p>Order food now and your order will arrive next round</p>
                     <div className="blueBox">Order Now</div>
                 </div>
             </Link>
