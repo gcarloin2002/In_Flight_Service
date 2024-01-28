@@ -25,20 +25,15 @@ model User {
 
 model Seat {
   id              Int          @id @default(autoincrement())
-  location        String
   occupied        Boolean
   users           User[]
-  toiletQueues    ToiletQueue[]
 }
 
-model ToiletQueue {
+model Toilet {
   id              Int          @id @default(autoincrement())
   section         Int
-  name            String
+  name            String?
   occupied        Boolean
-  open            Int
-  seatId          Int
-  seat            Seat         @relation(fields: [seatId], references: [id])
 }
 
 model Order {
