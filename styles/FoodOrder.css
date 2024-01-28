@@ -48,6 +48,10 @@
     margin-top: 90px;
   }
 
+  .selected-image {
+    border: 5px solid #007bff; /* Example: 3px solid blue border */
+}
+
   .fixed-button {
     position: fixed;
     bottom: 30px;
@@ -75,6 +79,10 @@
     width: 100%;
     height: 43vh;
     border-color: white;
+  }
+
+  .drink-container{
+    margin-bottom: 100px;
   }
   .title {
     margin-left: 50px;

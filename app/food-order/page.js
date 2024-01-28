@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import AA_Logo from "../../assets/AA_Logo.svg";
 import ChevronLeft from "../../assets/chevron-left-solid.svg";
@@ -17,6 +17,10 @@ export default function FoodOrder() {
     infinite: false,
     navigator: false,
   };
+
+  const [entrees, setEntrees] = useState();
+  const [snacks, setSnacks] = useState();
+  const [drinks, setDrinks] = useState();
 
   return (
     <div className="food-order-container-1">
@@ -44,6 +48,7 @@ export default function FoodOrder() {
                   console.log("test" + item.id);
                   addOrder();
                   decrementFood(item.id);
+                  setEntrees(item.id);
                 }}
                 key={item.id}
               >
@@ -51,10 +56,9 @@ export default function FoodOrder() {
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="img"
-                    onLoad={() => {
-                      console.log(`Image loaded: ${item.alt}`);
-                    }}
+                    className={`img ${
+                      item.id === entrees ? "selected-image" : ""
+                    }`}
                   />
                 </div>
               </button>
@@ -75,6 +79,7 @@ export default function FoodOrder() {
                   console.log("test" + item.id);
                   addOrder();
                   decrementFood(item.id);
+                  setSnacks(item.id);
                 }}
                 key={item.id}
               >
@@ -82,10 +87,9 @@ export default function FoodOrder() {
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="img"
-                    onLoad={() => {
-                      console.log(`Image loaded: ${item.alt}`);
-                    }}
+                    className={`img ${
+                      item.id === snacks ? "selected-image" : ""
+                    }`}
                   />
                 </div>
               </button>
@@ -95,7 +99,7 @@ export default function FoodOrder() {
       </div>
 
       {/* Need to change onclick, images here */}
-      <div className="">
+      <div className="drink-container">
         <h1 className="header-entrees">Drinks</h1>
         <div className="container">
           <Slider {...settings}>
@@ -106,6 +110,7 @@ export default function FoodOrder() {
                   console.log("test" + item.id);
                   addOrder();
                   decrementFood(item.id);
+                  setDrinks(item.id);
                 }}
                 key={item.id}
               >
@@ -113,10 +118,9 @@ export default function FoodOrder() {
                   <img
                     src={item.src}
                     alt={item.alt}
-                    className="img"
-                    onLoad={() => {
-                      console.log(`Image loaded: ${item.alt}`);
-                    }}
+                    className={`img ${
+                      item.id === drinks ? "selected-image" : ""
+                    }`}
                   />
                 </div>
               </button>
